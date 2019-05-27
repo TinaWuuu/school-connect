@@ -1,0 +1,11 @@
+.content {
+    display: flex;
+}
+
+.for {
+    flex: 1;
+}
+
+.immg {
+    flex: 1;
+}

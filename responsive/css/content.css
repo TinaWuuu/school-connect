@@ -1,0 +1,66 @@
+/*       
+    Author:武也婷
+    BuildDate:2018-4-17
+    Version:1.0
+    Function:Bootstrap
+*/
+
+/*public*/
+.carousel{ /*轮播图居中*/
+    margin:0 auto;
+}
+li{
+    list-style: none;
+}
+span{
+    font-weight:bold;
+}
+h3{
+    font-weight:bold;
+    padding-left: 5%;
+}
+ul{
+    width: 80%;
+    border-top: 1px dotted #E0E0E0;
+    padding: 5%; 
+}
+/*public end*/
+
+/*设置导航栏字体大小*/
+.navbar-text{
+    font-size: 18px;
+    margin-left:0px;
+    margin-right:0px;
+    font-size: 18px;
+}
+
+
+/*label*/
+label{
+    padding-left: 5%;
+}
+label i{  
+    text-align: left;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    border:1px solid #999;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+label input[type="checkbox"]:checked+i{
+    background: url('../images/钩.png')center center no-repeat blue;
+    background-size: 15px 15px;
+    border: 1px solid blue;
+} 
+/*label end*/
+
+/*footer*/
+footer p{
+    text-align: center;
+    color:blue;
+}
+/*footer end*/
+
+

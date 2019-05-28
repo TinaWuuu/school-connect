@@ -1,13 +1,14 @@
+<?php
+  session_start();
+?>
+
 <!-- 
     Author:武也婷 
     BuildDate:2018-5-15
     Version:1.0
     Function:address book
+    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
  -->
-
-<?php
-  session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -38,8 +39,10 @@
         <!--连接数据库-->
         <?php include("conn.php");?>
         
+        <!--空行调整-->
         <br/>
         <br/>
+
         <div class="row">
           <div class="col-md-4 col-md-offset-2">
             <img src="images/login.png" alt="images" id="userImage">

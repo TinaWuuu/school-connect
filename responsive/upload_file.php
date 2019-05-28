@@ -1,18 +1,20 @@
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-20
-    Version:1.0
-    Function:address book
- -->
-
 <?php
     session_start();
     if($_SESSION["login"]!=1){
     echo "<script>alert('你没有权限访问')</script>";
     echo"<script>window.location.href='login.php'</script>";
     }
-    
+    ?>
 
+<!-- 
+    Author:武也婷 
+    BuildDate:2018-5-20
+    Version:1.0
+    Function:address book
+    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
+ -->
+
+<?php
     $bool=($_FILES["file"]["type"]=="image/gif"  ||
         $_FILES["file"]["type"]=="image/jpg" ||
         $_FILES["file"]["type"]=="image/jpeg" ||
@@ -63,4 +65,7 @@
         //echo "<script>window.location.href='view_form.php?image=$filePath';<script>";
     }
 ?>
+
+
+
 

@@ -1,10 +1,3 @@
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-18
-    Version:1.0
-    Function:address book
- -->
-
 <?php
   session_start();
   if($_SESSION["login"]!=2){
@@ -12,6 +5,14 @@
     echo"<script>window.location.href='login.php'</script>";
   }
 ?>
+
+<!-- 
+    Author:武也婷 
+    BuildDate:2018-5-14
+    Version:1.0
+    Function:address book
+    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
+ -->
 
 <!DOCTYPE html>
 <html lang="zh-CN">

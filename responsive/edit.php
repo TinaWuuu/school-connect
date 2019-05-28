@@ -1,9 +1,3 @@
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-17
-    Version:1.0
-    Function:address book
- -->
 <?php
   session_start();
   if($_SESSION["login"]!=1){
@@ -15,6 +9,14 @@
   $_SESSION['i']= !isset($_GET['id']) ? $_GET['id'] : $_GET['id'];
   //echo $_SESSION['i'];
 ?>
+
+<!-- 
+    Author:武也婷 
+    BuildDate:2018-5-14
+    Version:1.0
+    Function:address book
+    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
+ -->
 
 <!DOCTYPE html>
 <html lang="zh-CN">

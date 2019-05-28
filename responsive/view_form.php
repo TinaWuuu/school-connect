@@ -1,10 +1,3 @@
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-16
-    Version:1.0
-    Function:address book
- -->
-
 <?php
 if($_SESSION["login"] != 1){
   echo "<script>alert('你没有权限访问')</script>";
@@ -12,6 +5,14 @@ if($_SESSION["login"] != 1){
   $_SESSION['image']="";
 }
 ?>
+
+<!-- 
+    Author:武也婷 
+    BuildDate:2018-5-16
+    Version:1.0
+    Function:address book
+    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
+ -->
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -24,7 +25,7 @@ if($_SESSION["login"] != 1){
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>
@@ -93,7 +94,6 @@ if($_SESSION["login"] != 1){
 
 <?php
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $message="";
     $uname=$_POST["user_name"];
     $pwd=$_POST["user_pwd"];
     $rname=$_POST["real_name"];
@@ -120,6 +120,8 @@ if($_SESSION["login"] != 1){
       echo"<script>alert('身份证格式不正确');</script>";
     }
     else{
+    $check="select user_name from students where user_name='$uname'";
+    if(mysqli_num_rows(mysqli_query($conn,$check)) < 1){
     $sql="insert into students(user_name, real_name, mobile, business,card_no,address,zipcode,enter_year,class,isuse)
     values('1','1','1','$bu','$card','$address',$zip','$enter','$class',0)";
     $sel="select id 
@@ -136,5 +138,9 @@ if($_SESSION["login"] != 1){
       echo "<script>alert('注册成功！');</script>";
     }
   }
+else{
+    echo "<script>alert('该用户名已存在！');</script>";
 }
+}
+  }
 ?>

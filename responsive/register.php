@@ -5,14 +5,6 @@
     Function:address book
  -->
  
- <?php
-  session_start();
-  if($_SESSION["login"]!=1){
-    echo "<script>alert('你没有权限访问')</script>";
-    echo"<script>window.location.href='login.php'</script>";
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -25,7 +17,7 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>
@@ -40,18 +32,15 @@
     <?php include("top_login.html");?>
 
     <div class="container">
-        <!--导航条-->
-        <?php include("nav.php");?>
-
-        <!--面包屑-->
-        <?php include("bread_path.php");?>
-
+        <!--空行调整-->
+        <br/>
+        <br/>
         <!--连接数据库-->
         <?php include("conn.php");?>
 
-        <!--新增列表-->
+        <!--注册列表-->
         <!--连接数据库-->
-        <?php include("view_form.php");?>
+        <?php include("register_form.php");?>
 
         <?php include("footer.html");?>
     </div>
@@ -62,4 +51,3 @@
   <script src= "js/bread.js"></script>
 </html>
 
-<?php echo "<script>bread('新增','详情') </script>"?>

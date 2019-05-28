@@ -27,7 +27,6 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/edit_form.css" />
 
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
@@ -39,7 +38,8 @@
 
 <?php 
   include('conn.php');
-  $sql = "select image from students where user_name = $iid";
+  $sql = "select image from students where user_name = '$iid';";
+  //echo $sql;
   $result = $conn->query($sql);
   if ($row = mysqli_fetch_array($result))
   {
@@ -48,29 +48,31 @@
 ?>
 
   <body>
-    <div class="content">
-    <div class="form-group center-block">
-        <img src="<?php echo $imageUrl == '' ? 'images/edit.png' : $imageUrl; ?>" alt="images" class="img-thumbnail" id="userImage">
-        <form action="upload_file.php?id=<?php echo $iid?>" method="post" enctype="multipart/form-data">
-          <input type="file" class="input" name="file">
-          <input type="submit" name="submit" value="上传">
-        </form>
-      </div>
-      <div class="for">
-          <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF?id= $iid"];?>" method="post">
-            <div class="form-group">
-              <input type="text" class="form-control" name="mobile" placeholder="手机">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-1">
+        <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF?id= $iid"];?>" method="post">
+            <div class="form-group text-center">
+              <div class=".col-xs-4">
+              <input type="text" class="form-control" name="mobile" placeholder="请输入手机号码">
+              </div>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="business" placeholder="工作单位">
+              <input type="text" class="form-control" name="business" placeholder="请输入工作单位">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="address" placeholder="通讯地址">
+              <input type="text" class="form-control" name="address" placeholder="请输入通讯地址">
             </div>
             <div class="form-group">
               <input type="submit" class="form-control" placeholder="提交">
             </div>
           </form>
+      </div>
+      <div class="col-md-4  col-md-offset-2">
+        <img src="<?php echo $imageUrl == '' ? 'images/edit.png' : $imageUrl; ?>" alt="images" class="img-thumbnail" id="userImage">
+        <form action="upload_file.php?id=<?php echo $iid?>" method="post" enctype="multipart/form-data">
+          <input type="file" class="input" name="file">
+          <input type="submit" name="submit" value="上传">
+        </form>
       </div>
     </div>
   </body>
@@ -87,16 +89,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $bu=$_POST["business"];
     $address=$_POST["address"];
     //  $imag=$_SESSION["userimage"];
-    /*if(!preg_match('/^[a-zA-z][0-9a-zA-z_].{5,17}$/',$uname)){
-      echo"用户名格式不正确";
-    }
-    else if(!preg_match('/^((\+\s)?86\s\-\s|((\+\s\-\s)?\s86)?)0?1[34579]\d{9}$/',$mo)){
-      echo"手机号码格式不正确";
+    if(!preg_match('/^((\+\s)?86\s\-\s|((\+\s\-\s)?\s86)?)0?1[34579]\d{9}$/',$mo)){
+      echo "<script>alert('手机号码格式不正确');</script>";
     }
     else{
-    $sql="insert into students(user_name, real_name, mobile, business,card_no,address,zipcode,enter_year,class,isuse)
-    values('1','1','1','$bu','$card','$add',$zip','$enter','$class',0)";*/
-    //echo "$iid";
     $sql= "update students
         set mobile='$mo',
         business='$bu',
@@ -110,5 +106,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<script>alert('编辑成功！');</script>";
     }
     //unset($_SESSION['username']);
+  }
 }
 ?>

@@ -18,6 +18,10 @@ body {
     font-size: 18px;
 }
 
+input {
+    width: 30%;
+}
+
 
 /*底部文字居中*/
 

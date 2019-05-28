@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <body>
+  
   <form class="form-inline" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
     <div class="form-group">
       <input type="text" class="form-control" name="query">
@@ -32,8 +33,10 @@
   if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo"
     <div class='container'>
+    <br/>  
     <table  class='table table-striped table-bordered table-hover'>
-    <tr>
+    <tr  class='text-center'>
+    <td>序号</td>
     <td>姓名</td>
     <td>身份证号</td>
     <td>入学年月</td>
@@ -60,20 +63,25 @@
       }
       $data = array();
       $res=mysqli_query($conn,$sql);
+      $cot=0;
       while($arr=mysqli_fetch_row($res)){
-          array_push($data,array_slice($arr,0,5));
-          echo "<tr>";
-          for($i=0;$i<5;$i++){
-              //foreach ($arr as $str) {
-              if($arr[5]=='0'){
-                  break;
-              }
-              //单元格的形式输出每部分信息
-              echo "<td>$arr[$i]</td>";
-          }
-          echo "</tr>";
+        array_push($data,array_slice($arr,0,5));
+        echo "<tr  class='text-center'>";
+        $cot++; 
+        echo "<td>$cot</td>";
+        for($i=0;$i<5;$i++){
+          //foreach ($arr as $str) {
+          if($arr[5]=='0'){
+            break;
+            }
+            //单元格的形式输出每部分信息
+          echo "<td>$arr[$i]</td>";
+        }
+        echo "</tr>";
       }
       echo"</table> </div>";
+      $str='共有'.$cot.'人';
+      echo $str;
       $_SESSION['title'] = array("姓名","身份证号","入学年月","班级","手机");
       $_SESSION['data'] = $data;
       mysqli_free_result($res);// 释放查询资源结果集

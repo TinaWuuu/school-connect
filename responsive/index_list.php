@@ -35,7 +35,7 @@
   </head>
   <body>
         <table class="table table-striped table-bordered table-hover">
-            <tr>
+            <tr  class='text-center'>
                 <td>序号</td>
                 <td>姓名</td>
                 <td>身份证号</td>
@@ -64,7 +64,7 @@
   $res=mysqli_query($conn,$sql);
   $cot=1;
   while($arr=mysqli_fetch_row($res)){
-    echo "<tr>";
+    echo "<tr class='text-center'>";
     if($arr[5]!='0'){
       echo "<td>$cot</td>";
       $cot++;

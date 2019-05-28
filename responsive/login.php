@@ -11,12 +11,6 @@
 
 <!DOCTYPE html>
 <html lang="zh-CN">
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-4-17
-    Version:1.0
-    Function:Bootstrap
- -->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,35 +34,42 @@
   <?php include("top_login.html");?>
 
     <div class="container">
-        <!--导航条-->
-
-        <?php include("conn.php");?>
-
-        <div class="container login">
-          <form class="login" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-            <div class="form-group center-block">
-              <input type="text" class="form-control" name="username" placeholder="用户名">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" name="pwd" placeholder="密码">
-            </div>
-            <div class="checkbox">
-              <label class="radio-inline">
-                <input type="radio" name="options" id="inlineRadio1" checked="checked" value="admin"> 管理员
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="options" id="inlineRadio2" value="student"> 校友
-              </label>
-            </div>
-            <div class="form-group">
-              <input type="submit" class="form-control" placeholder="登录"> 
-            </div>
-          </form>
-
+    
         <!--连接数据库-->
+        <?php include("conn.php");?>
         
-
+        <br/>
+        <br/>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+            <img src="images/login.png" alt="images" id="userImage">
+          </div>
+          <div class="col-md-4">
+            <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="用户名">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="pwd" placeholder="密码">
+              </div>
+              <div class="checkbox">
+                <label class="radio-inline">
+                  <input type="radio" name="options" id="inlineRadio1" value="admin"> 管理员
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="options" id="inlineRadio2" checked="checked" value="student"> 校友
+                </label>
+              </div>
+              <br/>
+              <div class="form-group">
+                <input type="submit" class="form-control" placeholder="登录"> 
+              </div>
+            </form>
+          </div>
+        </div>
+        
         <?php include("footer.html");?>
+
     </div>
     
   </body>
@@ -80,40 +81,48 @@
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     $name= $_POST["username"];
     $pwd=$_POST["pwd"];
-    if($_POST["options"]=="admin" ){
-      $sql="select admin_pwd
-      from admins
-      where admin_name='$name'";
-      include("conn.php");
-      $result = $conn->query($sql);
-      if ($row = mysqli_fetch_array($result))
-      {
-      $ppwd = $row['admin_pwd'];
-      }
-      if($ppwd==$pwd){
-        $_SESSION["login"]=1;
-        echo"<script>window.location.href='index.php'</script>";
-      }
-      else{
-        echo "<script>alert('登录失败');</script>";
-      }
+    if(!preg_match("/^[a-zA-z][0-9a-zA-z_].{5,17}$/",$name)){
+      echo"<script>alert('用户名格式不正确');</script>";
+    } 
+    else if(!preg_match("/^[0-9a-zA-z_].{5,17}$/",$pwd)){
+      echo "<script>alert('密码格式不正确');</script>";
     }
     else{
-      $sql="select user_pwd
-      from students
-      where user_name='$name'";
-      include("conn.php");
-      $result = $conn->query($sql);
-      if ($row = mysqli_fetch_array($result)){
-      $ppwd = $row['user_pwd'];
-      }
-      if($ppwd==$pwd){
-        $_SESSION["login"]=2;
-        $_SESSION["id"]=$name;
-        echo"<script>window.location.href='index_stu.php'</script>";
+      if($_POST["options"]=="admin" ){
+        $sql="select admin_pwd
+        from admins
+        where admin_name='$name'";
+        include("conn.php");
+        $result = $conn->query($sql);
+        if ($row = mysqli_fetch_array($result))
+        {
+        $ppwd = $row['admin_pwd'];
+        }
+        if($ppwd==$pwd){
+          $_SESSION["login"]=1;
+          echo"<script>window.location.href='index.php'</script>";
+        }
+        else{
+          echo "<script>alert('登录失败');</script>";
+        }
       }
       else{
-        echo "<script>alert('登录失败');</script>";
+        $sql="select user_pwd
+        from students
+        where user_name='$name'";
+        include("conn.php");
+        $result = $conn->query($sql);
+        if ($row = mysqli_fetch_array($result)){
+        $ppwd = $row['user_pwd'];
+        }
+        if($ppwd==$pwd){
+          $_SESSION["login"]=2;
+          $_SESSION["id"]=$name;
+          echo"<script>window.location.href='index_stu.php'</script>";
+        }
+        else{
+          echo "<script>alert('密码输入错误');</script>";
+        }
       }
     }
   }

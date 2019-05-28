@@ -11,7 +11,7 @@
     echo "<script>alert('你没有权限访问')</script>";
     echo"<script>window.location.href='login.php'</script>";
     }
-    $iid = $_GET["id"];
+    
 
     $bool=($_FILES["file"]["type"]=="image/gif"  ||
         $_FILES["file"]["type"]=="image/jpg" ||
@@ -46,14 +46,21 @@
     //保存文件路径，跳回到上传页面后可用
     $filePath="images/$filename";
 
-    $sql = "update students set image = '$filePath' where user_name = '$iid';"; 
-    include('conn.php');
-    echo $sql;
-    if((mysqli_query($conn,$sql))){
-        echo "<script>alert('上传成功');</script>";
-    }else{
-        echo "<script>alert('上传失败！');</script>";
+    if($_GET["id"]){
+        $iid = $_GET["id"];
+        $sql = "update students set image = '$filePath' where user_name = '$iid';"; 
+        include('conn.php');
+        echo $sql;
+        if((mysqli_query($conn,$sql))){
+            echo "<script>alert('上传成功');</script>";
+        }else{
+            echo "<script>alert('上传失败！');</script>";
+        }
+        echo "<script>window.location='edit.php?id=$iid'</script>";
     }
-    echo "<script>window.location='edit.php?id=$iid'</script>";
+    else{
+        $_SESSION["image"]=$filePath;
+        //echo "<script>window.location.href='view_form.php?image=$filePath';<script>";
+    }
 ?>
 

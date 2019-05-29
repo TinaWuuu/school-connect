@@ -6,14 +6,6 @@
     }
     ?>
 
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-20
-    Version:1.0
-    Function:address book
-    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
- -->
-
 <?php
     $bool=($_FILES["file"]["type"]=="image/gif"  ||
         $_FILES["file"]["type"]=="image/jpg" ||
@@ -46,30 +38,36 @@
 
 
     //保存文件路径，跳回到上传页面后可用
-    $filePath="images/$filename";
+    $filePath="../images/$filename";
+    $_SESSION["image"]=$filePath;
+    echo "<script>alert('上传成功');";
+    echo "window.parent.document.getElementById('userImage').src='".$_SESSION["image"]."';";
+    echo "window.location='../html/upload.html';";
+    echo "</script>";
 
-    if($_GET["id"] != "''"){
-        $iid = $_GET["id"];
-        $sql = "update students set image = '$filePath' where user_name = '$iid';"; 
-        include('conn.php');
-        if((mysqli_query($conn,$sql))){
-            echo "<script>alert('上传成功');</script>";
-        }else{
-            echo "<script>alert('上传失败！');</script>";
-        }
-        echo "<script>window.location='edit.php?id=$iid'</script>";
-    }
-    else{
-        $uname =  $_SESSION["newStudentName"];
-        $sql = "update students set image = '$filePath' where user_name = '$uname';"; 
-        include('conn.php');
-        if((mysqli_query($conn,$sql))){
-            echo "<script>alert('上传成功');</script>";
-        }else{
-            echo "<script>alert('上传失败！');</script>";
-        }
-        echo "<script>window.location='edit.php?id=$iid'</script>";
-    }
+
+    // if($_GET["id"] != "''"){
+    //     $iid = $_GET["id"];
+    //     $sql = "update students set image = '$filePath' where user_name = '$iid';"; 
+    //     include('conn.php');
+    //     if((mysqli_query($conn,$sql))){
+    //         echo "<script>alert('上传成功');</script>";
+    //     }else{
+    //         echo "<script>alert('上传失败！');</script>";
+    //     }
+    //     echo "<script>window.location='edit.php?id=$iid'</script>";
+    // }
+    // else{
+    //     $uname =  $_SESSION["newStudentName"];
+    //     $sql = "update students set image = '$filePath' where user_name = '$uname';"; 
+    //     include('conn.php');
+    //     if((mysqli_query($conn,$sql))){
+    //         echo "<script>alert('上传成功');</script>";
+    //     }else{
+    //         echo "<script>alert('上传失败！');</script>";
+    //     }
+    //     echo "<script>window.location='upload.html'</script>";
+    // }
 ?>
 
 

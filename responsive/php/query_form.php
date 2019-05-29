@@ -1,34 +1,22 @@
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-20
-    Version:1.0
-    Function:address book
- -->
+<form class="form-inline" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+  <div class="form-group">
+    <input type="text" class="form-control" name="query">
+  </div>
+  <label class="radio-inline">
+    <input type="radio" name="option" id="inlineRadio1" checked="checked" value="name"> 姓名
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="option" id="inlineRadio2" value="year"> 入学年份
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="option" id="inlineRadio3" value="class"> 班级
+  </label>
+  <div class="form-group navbar-right">
+    <input type="submit" class="form-control"value="搜索">
+    <a class="btn btn-primary btn-xs"  href="exportExcel.php" rel="external nofollow" ><i class="fa fa-share-square-o fa-lg"></i> 导出</a>
+  </div>
+</form>
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<body>
-  
-  <form class="form-inline" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-    <div class="form-group">
-      <input type="text" class="form-control" name="query">
-    </div>
-    <label class="radio-inline">
-      <input type="radio" name="option" id="inlineRadio1" checked="checked" value="name"> 姓名
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="option" id="inlineRadio2" value="year"> 入学年份
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="option" id="inlineRadio3" value="class"> 班级
-    </label>
-    <div class="form-group navbar-right">
-      <input type="submit" class="form-control"value="搜索">
-      <a class="btn btn-primary btn-xs"  href="exportExcel.php" rel="external nofollow" ><i class="fa fa-share-square-o fa-lg"></i> 导出</a>
-    </div>
-  </form>
-</body>
-</html>
 <?php
   if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo"

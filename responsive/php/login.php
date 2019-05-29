@@ -2,26 +2,24 @@
   session_start();
 ?>
 
+<!DOCTYPE html>
+<html lang="zh-CN">
 <!-- 
     Author:武也婷 
     BuildDate:2018-5-15
     Version:1.0
     Function:address book
-    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
- -->
-
-<!DOCTYPE html>
-<html lang="zh-CN">
+ -->  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>登录</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
 
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
@@ -32,7 +30,7 @@
   </head>
 
   <body>
-  <?php include("top_login.html");?>
+  <?php include("../html/top_login.html");?>
 
     <div class="container">
     
@@ -45,7 +43,7 @@
 
         <div class="row">
           <div class="col-md-4 col-md-offset-2">
-            <img src="images/login.png" alt="images" id="userImage">
+            <img src="../images/login.png" alt="images" id="userImage">
           </div>
           <div class="col-md-4">
             <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
@@ -71,7 +69,7 @@
           </div>
         </div>
         
-        <?php include("footer.html");?>
+        <?php include("../html/footer.html");?>
 
     </div>
     

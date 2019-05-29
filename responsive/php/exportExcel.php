@@ -7,14 +7,6 @@
     }
 ?>
 
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-14
-    Version:1.0
-    Function:address book
-    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
- -->
-
 <?php
     function export($filename, $tileArray=[], $dataArray=[]){
         ini_set('memory_limit','512M');

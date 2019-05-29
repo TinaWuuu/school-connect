@@ -2,11 +2,21 @@ fieldset {
     padding: .35em .625em .75em;
     margin: 0 2px;
     border: 1px solid silver;
+    width: 70%;
+    margin: 15px auto;
+    position: relative;
+    top: 20px;
 }
 
 legend {
+    text-align: center;
     padding: .5em;
     border: 0;
-    width: auto;
+    width: 120px;
+    font-weight: bolder;
     margin-bottom: 0px;
+    position: relative;
+    background: #fff;
+    left: -10%;
+    top: -30px;
 }

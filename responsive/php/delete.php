@@ -1,10 +1,3 @@
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-20
-    Version:1.0
-    Function:address book
- -->
-
 <?php
     include("conn.php");
     $i= isset($_GET['id']) ? $_GET['id'] : '';

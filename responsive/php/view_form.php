@@ -2,41 +2,11 @@
 if($_SESSION["login"] != 1){
     echo "<script>alert('你没有权限访问')</script>";
     echo "<script>window.location.href='login.php'</script>";
-    $_SESSION['image']="";
 }
 ?>
 
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-16
-    Version:1.0
-    Function:address book
-    由于session_start()语句要放到文件的开头，所以我的注释写到了php的下面
- -->
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
-    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-1">
+<div class="row">
+  <div class="col-md-4 col-md-offset-1">
     <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
       <div class="form-group">
         <input type="text" class="form-control" name="user_name" placeholder="用户名">
@@ -80,17 +50,12 @@ if($_SESSION["login"] != 1){
         <input type="submit" class="form-control" placeholder="提交">
       </div>
     </form>
-    </div>
-    <div class="col-md-4 col-md-offset-2">
-      <form action="upload_file.php?id=''" method="post" enctype="multipart/form-data">
-        <img src="<?php echo $_SESSION['image'] == '' ? 'images/edit.png' : $_SESSION['image']; ?>" alt="images" class="img-thumbnail" id="userImage">
-        <input type="file" class="input" name="file">
-        <input type="submit" name="submit" value="上传">
-      </form>
-    </div>
   </div>
-  </body>
-</html>
+  <div class="col-md-4 col-md-offset-2">
+    <img src="../images/edit.png" alt="images" class="img-thumbnail" id="userImage">
+    <iframe src="../html/upload.html" frameborder="0"></iframe>
+  </div>
+</div>
 
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -122,21 +87,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $check="select user_name from students where user_name='$uname'";
         if(mysqli_num_rows(mysqli_query($conn,$check)) < 1){
-            $sql="insert into students(user_name, real_name, mobile, business,card_no,address,zipcode,enter_year,class,isuse)
-                values('1','1','1','$bu','$card','$address',$zip','$enter','$class',0)";
+            //$sql="insert into students(user_name, real_name, mobile, business,card_no,address,zipcode,enter_year,class,isuse)
+                //values('1','1','1','$bu','$card','$address',$zip','$enter','$class',0)";
             $sel="select id 
                 from classes
                 where class_name='$class'";
             $res=mysqli_query($conn,$sel);
             $arr=mysqli_fetch_row($res);
             $sql= "insert into students(user_name, user_pwd,real_name, mobile, business,card_no,address,zipcode,enter_year,class_id,isuse)
-                values('$uname','$pwd','$rname','$mo','$bu','$card','$address','$zip','$enter','$arr[0]',0)";
+                values('$uname','$pwd','$rname','$mo','$bu','$card','$address','$zip','$enter','$arr[0]',1)";
+           
             //插入数据库
             if(!(mysqli_query($conn,$sql))){
                 echo "<script>alert('数据插入失败');</script>";
             }else{
-                $_SESSION['newStudentName'] = $uname;
-                echo "<script>alert('注册成功！');</script>";
+                if(isset($_SESSION["image"])){
+                  $image=$_SESSION["image"];
+                  $sqli="update students 
+                  set image='$image'
+                  where user_name='$uname'";
+                  mysqli_query($conn,$sqli);
+                  unset($_SESSION["image"]);
+                  }
+                echo "<script>alert('新增成功！');</script>";
             }
         }
         else{

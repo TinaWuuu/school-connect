@@ -1,9 +1,3 @@
-<!-- 
-    Author:武也婷 
-    BuildDate:2018-5-15
-    Version:1.0
-    Function:address book
- -->
 <?php
     $host='127.0.0.1';
     $user='root';

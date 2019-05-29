@@ -1,8 +1,8 @@
 <?php
 if($_SESSION["login"] != 1){
-  echo "<script>alert('你没有权限访问')</script>";
-  echo "<script>window.location.href='login.php'</script>";
-  $_SESSION['image']="";
+    echo "<script>alert('你没有权限访问')</script>";
+    echo "<script>window.location.href='login.php'</script>";
+    $_SESSION['image']="";
 }
 ?>
 
@@ -25,7 +25,7 @@ if($_SESSION["login"] != 1){
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     <!--[if lt IE 9]>
@@ -93,7 +93,7 @@ if($_SESSION["login"] != 1){
 </html>
 
 <?php
-  if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     $uname=$_POST["user_name"];
     $pwd=$_POST["user_pwd"];
     $rname=$_POST["real_name"];
@@ -105,42 +105,43 @@ if($_SESSION["login"] != 1){
     $enter=$_POST["enter_year"];
     $class=$_POST["class"];
     if(!preg_match("/^[a-zA-z][0-9a-zA-z_].{5,17}$/",$uname)){
-      echo"<script>alert('用户名格式不正确');</script>";
+        echo"<script>alert('用户名格式不正确');</script>";
     } 
     else if(!preg_match("/^[0-9a-zA-z_].{5,17}$/",$pwd)){
-      echo "<script>alert('密码格式不正确');</script>";
+        echo "<script>alert('密码格式不正确');</script>";
     }
     else if(!preg_match('/^((\+\s)?86\s\-\s|((\+\s\-\s)?\s86)?)0?1[34579]\d{9}$/',$mo)){
-      echo"<script>alert('手机号码格式不正确');</script>";
+        echo"<script>alert('手机号码格式不正确');</script>";
     }
     else if(!preg_match("/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/",$card)){
-      echo"<script>alert('身份证格式不正确');</script>";
+        echo"<script>alert('身份证格式不正确');</script>";
     }
     else if(!preg_match("/^[0-8][0-7]\d{4}$/",$zip)){
-      echo"<script>alert('身份证格式不正确');</script>";
+        echo"<script>alert('身份证格式不正确');</script>";
     }
     else{
-    $check="select user_name from students where user_name='$uname'";
-    if(mysqli_num_rows(mysqli_query($conn,$check)) < 1){
-    $sql="insert into students(user_name, real_name, mobile, business,card_no,address,zipcode,enter_year,class,isuse)
-    values('1','1','1','$bu','$card','$address',$zip','$enter','$class',0)";
-    $sel="select id 
-          from classes
-          where class_name='$class'";
-    $res=mysqli_query($conn,$sel);
-    $arr=mysqli_fetch_row($res);
-    $sql= "insert into students(user_name, user_pwd,real_name, mobile, business,card_no,address,zipcode,enter_year,class_id,isuse)
-    values('$uname','$pwd','$rname','$mo','$bu','$card','$address','$zip','$enter','$arr[0]',0)";
-    //插入数据库
-    if(!(mysqli_query($conn,$sql))){
-      echo "<script>alert('数据插入失败');</script>";
-    }else{
-      echo "<script>alert('注册成功！');</script>";
+        $check="select user_name from students where user_name='$uname'";
+        if(mysqli_num_rows(mysqli_query($conn,$check)) < 1){
+            $sql="insert into students(user_name, real_name, mobile, business,card_no,address,zipcode,enter_year,class,isuse)
+                values('1','1','1','$bu','$card','$address',$zip','$enter','$class',0)";
+            $sel="select id 
+                from classes
+                where class_name='$class'";
+            $res=mysqli_query($conn,$sel);
+            $arr=mysqli_fetch_row($res);
+            $sql= "insert into students(user_name, user_pwd,real_name, mobile, business,card_no,address,zipcode,enter_year,class_id,isuse)
+                values('$uname','$pwd','$rname','$mo','$bu','$card','$address','$zip','$enter','$arr[0]',0)";
+            //插入数据库
+            if(!(mysqli_query($conn,$sql))){
+                echo "<script>alert('数据插入失败');</script>";
+            }else{
+                $_SESSION['newStudentName'] = $uname;
+                echo "<script>alert('注册成功！');</script>";
+            }
+        }
+        else{
+            echo "<script>alert('该用户名已存在！');</script>";
+        }
     }
-  }
-else{
-    echo "<script>alert('该用户名已存在！');</script>";
 }
-}
-  }
 ?>

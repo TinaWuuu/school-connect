@@ -48,11 +48,10 @@
     //保存文件路径，跳回到上传页面后可用
     $filePath="images/$filename";
 
-    if($_GET["id"]){
+    if($_GET["id"] != "''"){
         $iid = $_GET["id"];
         $sql = "update students set image = '$filePath' where user_name = '$iid';"; 
         include('conn.php');
-        echo $sql;
         if((mysqli_query($conn,$sql))){
             echo "<script>alert('上传成功');</script>";
         }else{
@@ -61,8 +60,15 @@
         echo "<script>window.location='edit.php?id=$iid'</script>";
     }
     else{
-        $_SESSION["image"]=$filePath;
-        //echo "<script>window.location.href='view_form.php?image=$filePath';<script>";
+        $uname =  $_SESSION["newStudentName"];
+        $sql = "update students set image = '$filePath' where user_name = '$uname';"; 
+        include('conn.php');
+        if((mysqli_query($conn,$sql))){
+            echo "<script>alert('上传成功');</script>";
+        }else{
+            echo "<script>alert('上传失败！');</script>";
+        }
+        echo "<script>window.location='edit.php?id=$iid'</script>";
     }
 ?>
 

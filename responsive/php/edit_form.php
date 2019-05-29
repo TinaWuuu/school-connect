@@ -55,7 +55,7 @@
     </form>
   </div>
   <div class="col-md-4  col-md-offset-2">
-    <img src="<?php echo $imageUrl == '' ? '../images/edit.png' : $imageUrl; ?>" alt="images" class="img-thumbnail" id="userImage">
+    <img src="<?php echo $imageUrl == '' ? '../images/edit.png' : "../$imageUrl"; ?>" alt="images" class="img-thumbnail" id="userImage">
       <iframe src="../html/upload.html" frameborder="0"></iframe>
     </form>
   </div>

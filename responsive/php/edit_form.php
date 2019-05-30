@@ -77,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         where user_name='$iid'";
         mysqli_query($conn,$sqli);
         unset($_SESSION["image"]);
-        unset($_SESSION["id"]);
+        //unset($_SESSION["id"]);
         }
       echo "<script>alert('编辑成功！');</script>";
       if($_SESSION["login"]==1){

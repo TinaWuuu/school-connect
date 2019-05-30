@@ -5,57 +5,60 @@ if($_SESSION["login"] != 1){
 }
 ?>
 
-<div class="row">
-  <div class="col-md-4 col-md-offset-1">
-    <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-      <div class="form-group">
-        <input type="text" class="form-control" name="user_name" placeholder="用户名">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="user_pwd" placeholder="密码">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="real_name" placeholder="真实姓名">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="mobile" placeholder="手机">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="business" placeholder="工作单位">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="card" placeholder="身份证号">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="address" placeholder="通讯地址">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" name="zipcode" placeholder="邮编">
-      </div>
-      <div class="form-group">
-        <select class="form-control" name="enter_year">
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <select class="form-control" name="class">
-            <option>计算机161</option>
-            <option>计算机171</option>
-            <option>物联网181</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input type="submit" class="form-control" placeholder="提交">
-      </div>
-    </form>
+<fieldset>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1">
+      <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+        <legend>新增校友</legend>
+        <div class="form-group">
+          <input type="text" class="form-control" name="user_name" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="user_pwd" placeholder="请输入密码">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="real_name" placeholder="请输入真实姓名">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="mobile" placeholder="请输入手机号码">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="business" placeholder="请输入工作单位">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="card" placeholder="请输入身份证号">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="address" placeholder="请输入通讯地址">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="zipcode" placeholder="请输入邮编">
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="enter_year">
+              <option>2016</option>
+              <option>2017</option>
+              <option>2018</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="class">
+              <option>计算机161</option>
+              <option>计算机171</option>
+              <option>物联网181</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="form-control" placeholder="提交">
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4 col-md-offset-2">
+      <img src="../images/edit.png" alt="images" class="img-thumbnail" id="userImage" style="margin-top: 50px;">
+      <iframe src="../html/upload.html" frameborder="0"></iframe>
+    </div>
   </div>
-  <div class="col-md-4 col-md-offset-2">
-    <img src="../images/edit.png" alt="images" class="img-thumbnail" id="userImage">
-    <iframe src="../html/upload.html" frameborder="0"></iframe>
-  </div>
-</div>
+</fieldset>
 
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){

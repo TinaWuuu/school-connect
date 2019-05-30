@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION["login"]!=1){
+    if($_SESSION["login"]!=1 && $_SESSION["login"]!=2){
     echo "<script>alert('你没有权限访问')</script>";
     echo"<script>window.location.href='login.php'</script>";
     }
@@ -34,7 +34,7 @@
     $filename=$today.".".$fileArray[1];
 
     //移动文件并重命名upload
-    move_uploaded_file($_FILES["file"]["tmp_name"],"images/$filename");
+    move_uploaded_file($_FILES["file"]["tmp_name"],"../images/$filename");
 
 
     //保存文件路径，跳回到上传页面后可用

@@ -7,7 +7,9 @@
     //修改数据库
     if(!(mysqli_query($conn,$sql))){
     echo "<script>alert('删除失败');</script>";
+    echo "<script>window.location.href='index.php';</script>";
     }else{
     echo "<script>alert('删除成功！');</script>";
+    echo "<script>window.location.href='index.php';</script>";
     }
 ?>

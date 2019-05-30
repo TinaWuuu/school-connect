@@ -1,5 +1,7 @@
+<fieldset>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
+    <legend>校友注册</legend>
     <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
       <div class="form-group">
         <input type="text" class="form-control" name="user_name" placeholder="用户名">
@@ -45,6 +47,8 @@
     </form>
   </div>
 </div>
+</fieldset>
+<br/>
 
 <?php
   if($_SERVER["REQUEST_METHOD"] == "POST"){

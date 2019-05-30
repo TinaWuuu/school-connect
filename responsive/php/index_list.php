@@ -39,11 +39,11 @@
       //单元格的形式输出每部分信息
       echo "<td>$arr[$i]</td>";
     }
-    
+    $str="$arr[6]";
     echo "<td>
     <a href='view.php'><i class='fa fa-file-o'></i></a>
     <a href='edit.php?id=$arr[6]'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
-    <a href='#' onclick='del($arr[6])'><i class='fa fa-trash' aria-hidden='true'></i></a>
+    <a href='javascript:void(0);' onclick="."del('$arr[6]')"."><i class='fa fa-trash' aria-hidden='true'></i></a>
     </td>";
     }
     echo "</tr>";

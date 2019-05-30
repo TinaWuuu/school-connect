@@ -48,10 +48,10 @@
           <div class="col-md-4">
             <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
               <div class="form-group">
-                <input type="text" class="form-control" name="username" placeholder="用户名">
+                <input type="text" class="form-control" name="username" placeholder="请输入用户名">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="pwd" placeholder="密码">
+                <input type="password" class="form-control" name="pwd" placeholder="请输入密码">
               </div>
               <div class="checkbox">
                 <label class="radio-inline">

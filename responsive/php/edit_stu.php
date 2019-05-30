@@ -6,11 +6,9 @@
     echo"<script>window.location.href='login.php'</script>";
   }
   //$_SESSION['i']= $_GET['id'];
-  $_SESSION['i']= !isset($_GET['id']) ? $_GET['id'] : $_GET['id'];
+  //$_SESSION['i']= !isset($_GET['id']) ? $_GET['id'] : $_GET['id'];
   //echo $_SESSION['i'];
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="zh-CN">

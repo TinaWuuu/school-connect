@@ -5,8 +5,6 @@
   }
   $iid= isset($_GET['id']) ? $_GET['id'] : $_GET['id'];
   $i=$_GET['id'];
-  $i= $_SESSION["i"];
-  //$_SESSION["iid"]=$iid;
   //echo $iid;
   if($_SESSION["login"]==2){
     $i = $_SESSION["id"];
@@ -27,7 +25,7 @@
 <fieldset>
   <div class="row">
     <div class="col-md-4 col-md-offset-1">
-      <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+      <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF?id=$i"];?>" method="post">
         <legend>编辑校友</legend>
       <div class="form-group text-center">
         <div class=".col-xs-4">
@@ -61,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //$id=$_SESSION["i"];
     $bu=$_POST["business"];
     $address=$_POST["address"];
-    $i= $_SESSION["i"];
+     //  $i= $_SESSION["i"];
     //$iid=$_GET['iid'];
     //echo $iid;
     //  $imag=$_SESSION["userimage"];

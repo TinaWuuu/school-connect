@@ -14,7 +14,7 @@
     if(!$bool){
         die("类型不对<a href='javascript:window.history.back();'>返回</a>");
     }  
-    $bool=$_FILES["file"]["size"]<100000;
+    $bool=$_FILES["file"]["size"]<10000000;
     if(!$bool){
         die("大小不对<a href='javascript:window.history.back();'>返回</a>");
     }

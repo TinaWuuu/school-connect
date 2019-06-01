@@ -11,28 +11,31 @@ if($_SESSION["login"] != 1){
       <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <legend>新增校友</legend>
         <div class="form-group">
-          <input type="text" class="form-control" name="user_name" placeholder="请输入用户名">
+          <p id="words"></p>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" name="user_pwd" placeholder="请输入密码">
+          <input type="text" class="form-control" name="user_name" placeholder="请输入用户名" id="user_name">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="real_name" placeholder="请输入真实姓名">
+          <input type="password" class="form-control" name="user_pwd" placeholder="请输入密码" id="user_pwd">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="mobile" placeholder="请输入手机号码">
+          <input type="text" class="form-control" name="real_name" placeholder="请输入真实姓名" id="real_name">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="business" placeholder="请输入工作单位">
+          <input type="text" class="form-control" name="mobile" placeholder="请输入手机号码" id="mobile">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="card" placeholder="请输入身份证号">
+          <input type="text" class="form-control" name="business" placeholder="请输入工作单位" id="business">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="address" placeholder="请输入通讯地址">
+          <input type="text" class="form-control" name="card" placeholder="请输入身份证号" id="card">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="zipcode" placeholder="请输入邮编">
+          <input type="text" class="form-control" name="address" placeholder="请输入通讯地址" id="address">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="zipcode" placeholder="请输入邮编" id="zipcode">
         </div>
         <div class="form-group">
           <select class="form-control" name="enter_year">
@@ -84,8 +87,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else if(!preg_match("/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/",$card)){
         echo"<script>alert('身份证格式不正确');</script>";
     }
-    else if(!preg_match("/^[0-8][0-7]\d{4}$/",$zip)){
-        echo"<script>alert('身份证格式不正确');</script>";
+    else if(!preg_match("/^[0-9]{6}$/",$zip)){
+        echo"<script>alert('邮编格式不正确');</script>";
     }
     else{
         $check="select user_name from students where user_name='$uname'";

@@ -24,21 +24,22 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-1">
     <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF?id= $iid"];?>" method="post">
-        <legend>编辑校友</legend>
-      <div class="form-group text-center">
-        <div class=".col-xs-4">
-          <input type="text" class="form-control" name="mobile" placeholder="请输入手机号码">
-        </div>
+      <legend>编辑校友</legend>
+      <div class="form-group">
+        <p id="words"></p>
       </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="business" placeholder="请输入工作单位">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="address" placeholder="请输入通讯地址">
-        </div>
-        <div class="form-group">
-          <input type="submit" class="form-control" placeholder="提交">
-        </div>
+      <div class="form-group text-center">
+        <input type="text" class="form-control" name="mobile" placeholder="请输入手机号码" id="mobile">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="business" placeholder="请输入工作单位" id="business">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="address" placeholder="请输入通讯地址" id="address">
+      </div>
+      <div class="form-group">
+        <input type="submit" class="form-control" placeholder="提交">
+      </div>
     </form>
   </div>
   <div class="col-md-4  col-md-offset-2">

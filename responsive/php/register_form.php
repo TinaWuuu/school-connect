@@ -4,28 +4,31 @@
     <legend>校友注册</legend>
     <form class="form-horizontal" action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
       <div class="form-group">
-        <input type="text" class="form-control" name="user_name" placeholder="用户名">
+          <p id="words"></p>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control" name="user_pwd" placeholder="密码">
+        <input type="text" class="form-control" name="user_name" placeholder="请输入用户名" id="user_name">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="real_name" placeholder="真实姓名">
+        <input type="password" class="form-control" name="user_pwd" placeholder="请输入密码" id="user_pwd">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="mobile" placeholder="手机">
+         <input type="text" class="form-control" name="real_name" placeholder="请输入真实姓名" id="real_name">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="business" placeholder="工作单位">
+        <input type="text" class="form-control" name="mobile" placeholder="请输入手机号码" id="mobile">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="card" placeholder="身份证号">
+        <input type="text" class="form-control" name="business" placeholder="请输入工作单位" id="business">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="address" placeholder="通讯地址">
+        <input type="text" class="form-control" name="card" placeholder="请输入身份证号" id="card">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" name="zipcode" placeholder="邮编">
+        <input type="text" class="form-control" name="address" placeholder="请输入通讯地址" id="address">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="zipcode" placeholder="请输入邮编" id="zipcode">
       </div>
       <div class="form-group">
         <select class="form-control" name="enter_year">
@@ -87,7 +90,7 @@
     $res=mysqli_query($conn,$sel);
     $arr=mysqli_fetch_row($res);
     $sql= "insert into students(user_name, user_pwd,real_name, mobile, business,card_no,address,zipcode,enter_year,class_id,isuse)
-    values('$uname','$pwd','$rname','$mo','$bu','$card','$address','$zip','$enter','$arr[0]',0)";
+    values('$uname','$pwd','$rname','$mo','$bu','$card','$address','$zip','$enter','$arr[0]',1)";
     //插入数据库
     if(!(mysqli_query($conn,$sql))){
       echo "<script>alert('数据插入失败');</script>";

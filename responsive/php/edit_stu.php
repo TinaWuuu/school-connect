@@ -65,6 +65,7 @@
   <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
   <script src= "../js/nav.js"></script>
   <script src= "../js/bread.js"></script>
+  <script src= "../js/check.js"></script>
 </html>
 
 <?php echo "<script>bread('编辑','详情') </script>"?>

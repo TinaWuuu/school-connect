@@ -50,5 +50,6 @@
   <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src= "../js/bread.js"></script>
+  <script src= "../js/check.js"></script>
 </html>
 

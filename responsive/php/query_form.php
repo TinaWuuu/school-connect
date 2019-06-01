@@ -55,8 +55,10 @@
       while($arr=mysqli_fetch_row($res)){
         array_push($data,array_slice($arr,0,5));
         echo "<tr  class='text-center'>";
-        $cot++; 
-        echo "<td>$cot</td>";
+        if($arr[5]=='1'){
+          $cot++; 
+          echo "<td>$cot</td>";
+        }
         for($i=0;$i<5;$i++){
           //foreach ($arr as $str) {
           if($arr[5]=='0'){

@@ -16,7 +16,7 @@
     Author:武也婷 
     BuildDate:2018-5-14
     Version:1.0
-    Function:address book
+    Function:edit
  -->
   <head>
     <meta charset="utf-8">
@@ -64,6 +64,7 @@
   <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
   <script src= "../js/nav.js"></script>
   <script src= "../js/bread.js"></script>
+  <script src= "../js/check.js"></script>
 </html>
 
 <?php echo "<script>bread('首页','编辑') </script>"?>
